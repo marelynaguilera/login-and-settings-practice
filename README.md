@@ -6,7 +6,7 @@ This project requires to Install Java, node and npm.
 
 ## Setup
 1. Clone the git repo `git@github.com:marelynaguilera/login-and-settings-practice.git` 
-2. Go to folder `login-and-settings-practice.git` 
+2. Go to folder `login-and-settings-practice` 
 3. Run `npm install`
 
 ## Run tests
