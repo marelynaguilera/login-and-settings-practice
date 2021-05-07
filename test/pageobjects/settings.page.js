@@ -59,7 +59,7 @@ class SettingsPage extends Page {
 
     seeSuccessMessage(){
         const h1SuccessMessage = this.h1SuccessMessage
-        expect(h1SuccessMessage).toHaveTextContaining('Good evening,')
+        expect(h1SuccessMessage).toHaveTextContaining('Good')
     }
 
 }
