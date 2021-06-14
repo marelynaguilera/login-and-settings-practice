@@ -1,31 +1,41 @@
-import Page from './page';
+import Page from "./page";
 
 class LoginPage extends Page {
-    
-    get inputEmail () { return $('//input[@name="email"]') }
-    get inputPassword () { return $('//input[@name="password"]') }
-    get btnSubmit () { return $('button[type="submit"]') }
-    get logoutLink() { return $('//*[@id="root"]/div/div[1]/h6') }
-   
-    login (email, password) {
-        const inputEmail = this.inputEmail
-        this.inputEmail.setValue(email)
-        const inputPassword = this.inputPassword
-        inputPassword.setValue(password)
-        const btnSubmit = this.btnSubmit
-        btnSubmit.click()
-    }
+  get btnAcceptAllCookies() {
+    return $('//*[@id="CybotCookiebotDialogBodyButtonAccept"]');
+  }
+  get inputEmail() {
+    return $('//input[@name="email"]');
+  }
+  get inputPassword() {
+    return $('//input[@name="password"]');
+  }
+  get btnSubmit() {
+    return $('button[type="submit"]');
+  }
 
-    checkUserIsLogged(){
-        const logoutLink = this.logoutLink
-        logoutLink.isDisplayed()
-    }
+  get logoutLink() {
+    return $('//*[@id="root"]/div/nav/div/div[2]/div[2]/div[1]/div[2]/button');
+  }
 
-    logout(){
-        const logoutLink = this.logoutLink
-        logoutLink.click()
-    }
+  async acceptAllCookies() {
+    await (await this.btnAcceptAllCookies).click();
+  }
 
+  async login(email, password) {
+    await (await this.inputEmail).setValue(email);
+    await (await this.inputPassword).setValue(password);
+    await (await this.btnSubmit).click();
+  }
+
+  async checkUserIsLogged() {
+    await (await this.logoutLink).isDisplayed();
+  }
+
+  async logout() {
+    browser.fullscreenWindow();
+    await (await this.logoutLink).click();
+  }
 }
 
 export default new LoginPage();
